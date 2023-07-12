@@ -1,4 +1,5 @@
-# simple_shell
+# Simple_shell Project
+<img src="https://www.tecmint.com/wp-content/uploads/2020/11/if-else-statement.png"></img><br>
 This is a partnered project to build our own version of Unix simple shell or command line which works exactly the same as an OS command line.
 
 ## Testing
