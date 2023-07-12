@@ -31,5 +31,5 @@ $
 ```
 
 ## Collaborators
-[Nelson Ogunniran](https://github.com/fargodev)
+[Nelson Ogunniran](https://github.com/fargodev) <br>
 [Mabo Gwala](https://github.com/)
