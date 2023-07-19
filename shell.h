@@ -32,17 +32,22 @@ typedef struct shell_env
 } shell_t;
 
 /**
-  * struct built-in-cmd - structure for different built-in commands
+  * struct built_in_cmd - structure for different built-in commands
   * @cmd_name: name of commands
   * @cmd: function pointer to run the command
   *
   * Description: structure for different built in command in our shell
   */
-typedef struct built-in-cmd
+typedef struct built_in_cmd
 {
 	char *cmd_name;
 	void (*cmd)(shell_t *);
 } built_t;
 
+/** main.c **/
+int run_built_in(shell_t *, char *);
+int run_cmd(shell_t *, char *, char **);
+int run_path(shell_t *, char *);
+int check_slash(char *);
 
 #endif /** SHELL **/
