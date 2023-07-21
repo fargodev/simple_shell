@@ -55,10 +55,10 @@ typedef struct liststr
  * struct passinfo - has pseudo arguements for a function,
  * with uniform prototype for function pointer struct
  * @argv: array of strings from arg
- * @line_count - error count
  * @arg: string generated from getline with arguements
  * @path: string path for current command
  * @argc: argument count
+ * @line_count: error count
  * @err_num: error code for exit()s
  * @linecount_flag: if on count line of input
  * @fname: program filename
@@ -66,8 +66,8 @@ typedef struct liststr
  * @environ: modified copy of environ from LL env
  * @histcount: history line number count
  * @readfd: fd to read line input
+ * @cmd_buf: address of pointer to cmd_buf, on if chaining
  * @cmd_buf_type: CMD_type ||, &&, ;
- * cmd_buf: address of pointer to cmd_buf, on if chaining
  * @status: return status of last exec'd command
  * @env_changed: on if environ was changed
  * @alias: alias node
@@ -99,6 +99,16 @@ typedef struct passinfo
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
+/**
+ * struct builtin - has a builtin string and related function
+ * @type: builtin command flag
+ * @func: function
+ */
+typedef struct builtin
+{
+	char *type;
+	int (*func)(info_t *);
+} built_table;
 
 
 /**
