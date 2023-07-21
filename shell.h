@@ -14,6 +14,93 @@
 #include <sys/wait.h>
 #include <limits.h>
 
+/* for read/write buffers */
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
+
+/* for command chaining */
+#define CMD_NORM 0
+#define CMD_OR 1
+#define CMD_AND 2
+#define CMD_CHAIN 3
+
+/* for convert_number() */
+#define CONVERT_LOWERCASE 1
+#define CONVERT_UNSIGNED 2
+
+/* 1 if using system getline() */
+#define USE_GETLINE 0
+#define USE_STRTOK 0
+
+#define HIST_FILE ".simple_shell_history"
+#define HIST_MAX 4096
+
+extern char **environ;
+
+/**
+ * struct liststr - singly linked list
+ * @str: string
+ * @num: number field
+ * @next: next node
+ */
+typedef struct liststr
+{
+	int num;
+	char *str;
+	struct liststr *next;
+} list_t;
+
+/**
+ * struct passinfo - has pseudo arguements for a function,
+ * with uniform prototype for function pointer struct
+ * @argv: array of strings from arg
+ * @line_count - error count
+ * @arg: string generated from getline with arguements
+ * @path: string path for current command
+ * @argc: argument count
+ * @err_num: error code for exit()s
+ * @linecount_flag: if on count line of input
+ * @fname: program filename
+ * @env: linked list local copy of environ
+ * @environ: modified copy of environ from LL env
+ * @histcount: history line number count
+ * @readfd: fd to read line input
+ * @cmd_buf_type: CMD_type ||, &&, ;
+ * cmd_buf: address of pointer to cmd_buf, on if chaining
+ * @status: return status of last exec'd command
+ * @env_changed: on if environ was changed
+ * @alias: alias node
+ * @history: history node
+ */
+typedef struct passinfo
+{
+	char **argv;
+	char *arg;
+	char path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
+
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory management */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int readfd;
+	int histcount;
+} info_t;
+
+#define INFO_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0}
+
+
 /**
   * struct shell_env - stores address for pointer to free
   * @path_values: pointer to the path values of cmd
