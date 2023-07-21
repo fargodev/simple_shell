@@ -1,5 +1,5 @@
-#ifndef SHELL
-#define SHELL
+#ifndef _SHELL_H
+#define _SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,8 +10,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include <sys/type.h>
+#include <sys/types.h>
 #include <sys/wait.h>
+#include <limits.h>
 
 /**
   * struct shell_env - stores address for pointer to free
@@ -49,5 +50,18 @@ int run_built_in(shell_t *, char *);
 int run_cmd(shell_t *, char *, char **);
 int run_path(shell_t *, char *);
 int check_slash(char *);
+
+/** exit_shell.c **/
+int _myexit(info_t *);
+int _mycd(info_t *);
+int _myhelp(info_t *);
+
+/** env_shell.c **/
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int _populate_env_list(info_t *);
+
 
 #endif /** SHELL **/
