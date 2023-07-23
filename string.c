@@ -5,7 +5,7 @@
   * @str: string
   * Return: total number of string
   */
-int _strlen(char *str)
+size_t _strlen(char *str)
 {
 	char *s = str;
 	size_t char_num;
@@ -23,7 +23,7 @@ int _strlen(char *str)
   * @s: duplicated string pointer
   * Return: pointer to newly duplicate memory address
   */
-int _strdup(char *s)
+char * _strdup(char *s)
 {
 	size_t indx, len;
 	char *dup;
@@ -68,7 +68,7 @@ int _strcmp(char *str1, char *str2)
   * @delim: delimiter to split at
   * Return: pointer to pointers
   */
-int tokenize_str(char *str, char *delim)
+char **tokenize_str(char *str, char *delim)
 {
 	size_t n_delim = 0;
 	char *str_dup, *token;
