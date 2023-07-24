@@ -45,10 +45,15 @@ typedef struct token
 } token_t;
 
 /** Special EOF token indicating end of input **/
-extern token_t eof_token;
+token_t eof_token = {
+	.text_len = 0,
+};
 
+/** scanner.c **/
+void add_to_buf(char c);
+token_t *create_token(char *str);
+void free_token(token_t *tok);
 token_t *tokenize(src_s *src);
-void free_token(tokent_t *tok);
 
 /** prompts.c **/
 void print_prompt(void);
