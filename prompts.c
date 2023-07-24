@@ -2,7 +2,7 @@
 
 void print_prompt(void)
 {
-	fprintf(stderr, "$ ");
+	fprintf(stderr, "#cisfun$ ");
 }
 void print_promt2(void)
 {
