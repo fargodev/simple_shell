@@ -22,7 +22,7 @@ int main(int argc, char *argv[], char *envp[])
 	shell_ptrs.modify_path = modify_path;
 	shell_ptrs.path_values = path_values;
 	signal(SIGINT, SIG_IGN);
-	while (getlint_stat = getline(&input, &n_input, stdin) != -1)
+	while (getline_stat = getline(&input, &n_input, stdin) != -1)
 	{
 		shell_ptrs.input = input;
 		input_token = tokenize_str(input, delimiter);
@@ -115,7 +115,7 @@ int run_built_in(shell_t *ptrs, char *filename)
 	unsigned int num_words;
 	char **input_words;
 	built_t cmd[] = {
-		{"exit", my_exit},
+		{"exit", _myexit},
 		{"env", print_env},
 		{"NULL", NULL}
 	};
