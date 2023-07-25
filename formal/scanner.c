@@ -3,6 +3,10 @@
 char *tok_buf = NULL;
 int tok_bufsize = 0;
 int tok_bufindex = -1;
+int endloop = 0;
+char nchar;
+
+void nswitch(void);
 
 void add_to_buff(char c)
 {
@@ -41,9 +45,17 @@ token_t *create_token(char *str)
 	return (tok);
 }
 
+void free_token(token_t *tok)
+{
+	if (tok->text)
+		free(tok->text);
+	free(tok);
+}
+
 token_t *tokenize(src_s *src)
 {
-	int endloop = 0;
+	char nchar = next_char(src);
+
 	if (!src || !src->buffer || !src->bufsize)
 	{
 		errno = ENODATA;
@@ -63,8 +75,6 @@ token_t *tokenize(src_s *src)
 	tok_bufindex = 0;
 	tok_buf[0] = '\0';
 
-	char nchar = next_char(src);
-
 	if (nchar == ERRCHAR || nchar == EOF)
 		return (&eof_token);
 	nswitch();
@@ -81,3 +91,32 @@ token_t *tokenize(src_s *src)
 	return (tok);
 }
 
+
+void nswitch(void)
+{
+	src_s *src;
+
+	do
+	{
+		switch(nchar)
+		{
+			case (' '):
+			case ('\t'):
+				if (tok_bufindex > 0)
+					endloop = 1;
+				break;
+			case ('\n'):
+				if (tok_bufindex > 0)
+					unget_char(src);
+				else
+					add_to_buf(nchar);
+				endloop = 1;
+				break;
+			default:
+				add_to_buf(nchar);
+				break;
+		}
+		if (endloop)
+			break;
+	} while ((nchar = next_char(src)) != EOF);
+}
