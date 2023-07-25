@@ -13,6 +13,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <limits.h>
 
 /**
   * struct shell_env - store shell environment addresses
@@ -44,6 +45,17 @@ typedef struct built_in_cmd
 	void (*cmd)(shell_t *);
 } built_t;
 
+/**
+ * struct builtin - has builtin string and related function
+ * @func: function
+ * @type: builtin command flag
+ */
+typedef struct builtin
+{
+	char *type;
+	int (*func)(info_t *);
+} builtin_table;
+
 /** string.c **/
 size_t _strlen(char *);
 int _strcmp(char *, char *);
@@ -62,6 +74,9 @@ void free_shell(shell_t *);
 void print_cmd(char *, char *);
 
 /** builtin.c **/
+int _myexit(info_t);
+int _mycd(info_t);
+int _myhelp(info_t);
 void made_exit(shell_t *);
 void print_env(shell_t *);
 
