@@ -17,9 +17,10 @@
 /**
   * struct shell_env - store shell environment addresses
   * @path_values: pointer to values of the shell path
+  * @input: input token
   * @input_token: pointer for the cmd tokens
   * @path_modify: path pointer after modification
-  * 
+  *
   * Description: provide storage for all malloc'd elements
   */
 typedef struct shell_env
@@ -47,7 +48,7 @@ typedef struct built_in_cmd
 size_t _strlen(char *);
 int _strcmp(char *, char *);
 char *_strdup(char *);
-char *tokenize(char *, char *);
+char **tokenize(char *, char *);
 
 /** prompt1.c **/
 void print_ps(int);
