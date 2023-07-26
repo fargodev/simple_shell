@@ -49,7 +49,7 @@ typedef struct liststr
  * @cmd_buf_type: CMD_type ||, &&, ;
  * @status: return status of the last exec'd command
  * @cmd_buf: address of pointer to cmd_buf, on if chaining
- */
+ 
 typedef struct passinfo
 {
 	char *arg;
@@ -66,9 +66,9 @@ typedef struct passinfo
 	char **environ;
 	int env_changed;
 	int status;
-
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory management */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+*/
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory management 
+	int cmd_buf_type; /* CMD_type ||, &&, ;
 	int readfd;
 	int histcount;
 } info_t;
@@ -76,6 +76,7 @@ typedef struct passinfo
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
+*/
 
 /**
   * struct shell_env - store shell environment addresses
@@ -136,16 +137,11 @@ void free_shell(shell_t *);
 void print_cmd(char *, char *);
 
 /** builtin.c **/
-<<<<<<< HEAD
-void made_exit(shell_t *);
-void print_env(shell_t *);
-=======
 int myexit(shell_t *);
 void printenv(shell_t *);
 /*int _mycd(info_t);
 int _myhelp(info_t);
 void made_exit(shell_t *);*/
->>>>>>> 82bc265d66de758b37d5f1f2a6b17cacb57efdf2
 
 /** main.c **/
 int run_built_ins(shell_t *, char *);
