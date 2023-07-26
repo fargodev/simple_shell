@@ -63,7 +63,7 @@ int _strcmp(char *str1, char *str2)
   * tokenize - take string and split them up to tokens when delimiter is found
   * @str: string of commands
   * @delim: whitespaces, tab (point to break into token)
-  * 
+  *
   * Return: pointer
   */
 char **tokenize(char *str, char *delim)
