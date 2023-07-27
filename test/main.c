@@ -1,5 +1,7 @@
 #include "header.h"
 
+extern char **environ;
+
 /**
   * main - program entry point
   * @argc: argument count
@@ -115,7 +117,7 @@ int run_built_ins(shell_t *ptrs, char *filename)
 	unsigned int words_num;
 	char **words_input;
 	built_t cmd[] = {
-		{"exit", _myexit},
+		{"exit", myexit},
 		{"env", printenv},
 		{NULL, NULL},
 	};

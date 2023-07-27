@@ -1,35 +1,16 @@
-#ifndef HEADER_H
-#define HEADER_H
+#define _SHELL_H_
+#ifndef _SHELL_H_
 
-extern char **environ;
-
-/** System header libraries **/
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <signal.h>
-#include <dirent.h>
-#include <errno.h>
-#include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <sys/stat.h>
+#include <sysy/stat.h>
 #include <limits.h>
-#include <ctype.h>
-
-/**
- * struct liststr - singly linked list
- * @str: string
- * @num: number field
- * @next: next node
- */
-typedef struct liststr
-{
-	int num;
-	char *str;
-	struct liststr *next;
-} list_t;
+#include <fcntl.h>
+#include <errno.h>
 
 /**
  * struct passinfo - has pseudo-arguements to pass into function,
@@ -71,7 +52,7 @@ typedef struct passinfo
 	int status;
 
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory management */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int cmd_buf_type; /* CMD_type ||, &&, */
 	int readfd;
 	int histcount;
 } info_t;
@@ -117,26 +98,23 @@ typedef struct built_in_cmd
  */
 typedef struct builtin
 {
-	char *type;
-	int (*func)(info_t *);
+        char *type;
+        int (*func)(info_t *);
 } builtin_table;
 
-/** string.c **/
-size_t _strlen(char *);
-int _strcmp(char *, char *);
-char *_strdup(char *);
-char **tokenize(char *, char *);
 
-/** prompt1.c **/
-void print_ps(int);
-char *make_pathname(char *, char *);
-char *find_pathname(char **, char *);
-char *getenv(const char *);
-char **getpath(char **);
-
-/** prompt2.c **/
-void free_shell(shell_t *);
-void print_cmd(char *, char *);
+/**
+ * struct liststr - singly linked list
+ * @str: string
+ * @num: number field
+ * @next: next node
+ */
+typedef struct liststr
+{
+	int num;
+	char *str;
+	struct liststr *next;
+} list_t;
 
 /** builtin.c **/
 void made_exit(shell_t *);
@@ -144,13 +122,6 @@ void print_env(shell_t *);
 int _myexit(shell_t *);
 int _mycd(info_t);
 int _myhelp(info_t);
-void made_exit(shell_t *);
-
-/** main.c **/
-int run_built_ins(shell_t *, char *);
-int run_cmd(shell_t *, char *, char **);
-int run_path(shell_t *, char *);
-int slash_checker(char *);
 
 /** env_shell.c **/
 char *_getenv(info_t *, const char *);
@@ -166,4 +137,4 @@ void print_list_str(const char **list);
 int starts_with(const char *str, const char *prefix);
 void print_env(char **env);
 
-#endif /** HEADER_H **/
+#endif

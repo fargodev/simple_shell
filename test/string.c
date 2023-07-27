@@ -7,12 +7,12 @@
   */
 size_t _strlen(char *str)
 {
-	char *s = 0;
+	char *s = str;
 	size_t char_num = 0;
 
 	if (str == NULL)
 		return (char_num);
-	while (*str++ != '\0')
+	while (*s++ != '\0')
 		char_num++;
 	return (char_num);
 }
