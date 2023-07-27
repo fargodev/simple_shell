@@ -1,7 +1,5 @@
 #include "header.h"
 
-char **environ;
-
 /**
   * myexit - implementation of simple exit
   * @ptr: pointer containing all malloc'd
