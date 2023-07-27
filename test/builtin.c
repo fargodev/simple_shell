@@ -4,22 +4,22 @@ extern char **environ;
 
 /**
   * myexit - implementation of simple exit
-  * @ptr: pointer containing all malloc'd
+  * @ptrs: pointer containing all malloc'd
   * Return: return success
   */
-void myexit(shell_t *ptr)
+void myexit(shell_t *ptrs)
 {
 	char *str_exit;
 	unsigned int i;
 
-	str_exit = ptr->input_token[1];
+	str_exit = ptrs->input_token[1];
 	if (str_exit != NULL || ptr != NULL)
 	{
 		errno = 0;
 		for (i = 0; str_exit[i] != '\0'; i++)
 			errno = (errno * 10) + (str_exit[i] - '0');
 	}
-	free_shell(ptr);
+	free_shell(ptrs);
 	if (errno > 255)
 		errno %= 256;
 	exit(errno);
@@ -30,12 +30,12 @@ void myexit(shell_t *ptr)
   * @ptr: pointer containin all malloc'd
   * Return: success
   */
-void printenv(shell_t *ptr)
+void printenv(shell_t *ptrs)
 {
 	char newline = '\n';
 	unsigned int i, k;
 
-	(void)ptr;
+	(void)ptrs;
 	if (environ == NULL)
 		return;
 	for (i = 0; environ[i] != NULL; i++)
