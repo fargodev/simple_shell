@@ -49,7 +49,7 @@ char *_strdup(char *str)
   */
 int _strcmp(char *str1, char *str2)
 {
-	while (*str1 != '\0' || *str2 != '\0')
+	while (*str1 != '\0' && *str2 != '\0')
 	{
 		if (*str1++ != *str2++)
 			return (1);
@@ -68,7 +68,8 @@ int _strcmp(char *str1, char *str2)
   */
 char **tokenize(char *str, char *delim)
 {
-	char *str_dup, **tokens, *tok;
+	char **tokens;
+	char *str_dup, *tok;
 	size_t delim_num = 0;
 
 	if (!str || !delim)
