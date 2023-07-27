@@ -2,7 +2,7 @@
 
 /**
   * free_shell - free all elements in struct shell_t
-  * @shell_ptr: malloc'd elements structure
+  * @shell_ptrs: malloc'd elements structure
   */
 void free_shell(shell_t *shell_ptrs)
 {

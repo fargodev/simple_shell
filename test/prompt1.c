@@ -152,7 +152,6 @@ char *make_pathname(char *path, char *file)
   */
 char *_getenv(const char *name)
 {
-	extern char **environ;
 	unsigned int i, j;
 
 	for (i = 0; environ[i] != NULL; i++)

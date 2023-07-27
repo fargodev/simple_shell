@@ -1,7 +1,5 @@
 #include "header.h"
 
-extern char **environ;
-
 /**
   * main - program entry point
   * @argc: argument count
@@ -65,7 +63,7 @@ int slash_checker(char *str)
   * run_cmd - run input commands inputed by user
   * @shell_ptrs: struct containing all malloc'd spaces
   * @filename: name of file being run
-  * @env: environment variable
+  * @argenv: environment variable
   * Return: errno value
   */
 int run_cmd(shell_t *shell_ptrs, char *filename, char **argenv)
