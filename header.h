@@ -14,6 +14,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <limits.h>
+#include <ctype.h>
 
 /**
  * struct liststr - singly linked list
@@ -111,12 +112,12 @@ typedef struct built_in_cmd
  * struct builtin - has builtin string and related function
  * @func: function
  * @type: builtin command flag
-
+ */
 typedef struct builtin
 {
 	char *type;
 	int (*func)(info_t *);
-} builtin_table; */
+} builtin_table;
 
 /** string.c **/
 size_t _strlen(char *);
@@ -136,16 +137,12 @@ void free_shell(shell_t *);
 void print_cmd(char *, char *);
 
 /** builtin.c **/
-<<<<<<< HEAD
 void made_exit(shell_t *);
 void print_env(shell_t *);
-=======
-int myexit(shell_t *);
-void printenv(shell_t *);
-/*int _mycd(info_t);
+int _myexit(shell_t *);
+int _mycd(info_t);
 int _myhelp(info_t);
-void made_exit(shell_t *);*/
->>>>>>> 82bc265d66de758b37d5f1f2a6b17cacb57efdf2
+void made_exit(shell_t *);
 
 /** main.c **/
 int run_built_ins(shell_t *, char *);
@@ -153,8 +150,17 @@ int run_cmd(shell_t *, char *, char **);
 int run_path(shell_t *, char *);
 int slash_checker(char *);
 
+/** env_shell.c **/
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int populate_env_list(info_t *);
+
 /** function prototypes **/
 char *_strtok(char *, const char *);
 ssize_t get_line(char **, size_t *, FILE *);
+void print_list_str(const char** list);
+int starts_with(const char* str, const char* prefix);
 
 #endif /** HEADER_H **/
