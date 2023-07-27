@@ -17,7 +17,7 @@ void myexit(shell_t *ptrs)
 	{
 		errno = 0;
 		for (i = 0; str_exit[i] != '\0'; i++)
-			errno = (errno * 10) + (str_exit[i] - '0');
+			errno = errno * 10 + (str_exit[i] - '0');
 	}
 	free_shell(ptrs);
 	if (errno > 255)
