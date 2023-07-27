@@ -13,11 +13,11 @@ void myexit(shell_t *ptrs)
 	unsigned int i;
 
 	str_exit = ptrs->input_token[1];
-	if (str_exit != NULL || ptr != NULL)
+	if (str_exit != NULL || ptrs != NULL)
 	{
 		errno = 0;
 		for (i = 0; str_exit[i] != '\0'; i++)
-			errno = (errno * 10) + (str_exit[i] - '0');
+			errno = errno * 10 + (str_exit[i] - '0');
 	}
 	free_shell(ptrs);
 	if (errno > 255)
