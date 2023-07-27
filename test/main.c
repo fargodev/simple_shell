@@ -11,7 +11,7 @@ extern char **environ;
   */
 int main(int argc, char *argv[], char *argenv[])
 {
-	char **path_values, *input, **input_token, *path_modify;
+	char **path_values, **input_token, *input, *path_modify;
 	char delimiters[] = " \n\r\t";
 	size_t input_num;
 	ssize_t getline_stat;
@@ -68,7 +68,7 @@ int slash_checker(char *str)
   * @env: environment variable
   * Return: errno value
   */
-int run_cmd(shell_t *shell_ptrs, char *filename, char **env)
+int run_cmd(shell_t *shell_ptrs, char *filename, char **argenv)
 {
 	pid_t child_pid;
 	int status;
@@ -85,7 +85,7 @@ int run_cmd(shell_t *shell_ptrs, char *filename, char **env)
 			input_token[0] = find_pathname(path, input_token[0]);
 			if (input_token[0] != NULL)
 			{
-				if (execve(input_token[0], input_token, env) == -1)
+				if (execve(input_token[0], input_token, argenv) == -1)
 					perror(filename);
 				free(input_token[0]);
 			}
