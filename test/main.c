@@ -130,6 +130,9 @@ int run_built_ins(shell_t *ptrs, char *filename)
 	words_input = ptrs->input_token;
 	words_num = 0;
 	while (words_input[words_num] != NULL)
+		words_num++;
+	index = 0;
+	while (cmd[index].cmd_name)
 	{
 		if (!_strcmp(ptrs->input_token[0], cmd[index].cmd_name))
 		{
