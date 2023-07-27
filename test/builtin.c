@@ -1,5 +1,7 @@
 #include "header.h"
 
+extern char **environ;
+
 /**
   * myexit - implementation of simple exit
   * @ptr: pointer containing all malloc'd
@@ -32,7 +34,6 @@ void printenv(shell_t *ptr)
 {
 	char newline = '\n';
 	unsigned int i, k;
-	char **environ;
 
 	(void)ptr;
 	if (environ == NULL)

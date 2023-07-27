@@ -58,7 +58,7 @@ char **tokenize(char *, char *);
 void print_ps(int);
 char *make_pathname(char *, char *);
 char *find_pathname(char **, char *);
-char *getenv(const char *);
+char *_getenv(const char *);
 char **getpath(char **);
 
 /** prompt2.c **/

@@ -1,5 +1,7 @@
 #include "header.h"
 
+extern char **environ;
+
 /**
   * main - program entry point
   * @argc: argument count
@@ -150,7 +152,6 @@ int run_path(shell_t *shell_ptrs, char *filename)
 	pid_t child_pid;
 	int status;
 	char **input_token = shell_ptrs->input_token;
-	char **environ;
 
 	child_pid = fork();
 	if (child_pid == 0)
