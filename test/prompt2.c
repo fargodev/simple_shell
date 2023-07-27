@@ -4,12 +4,12 @@
   * free_shell - free all elements in struct shell_t
   * @shell_ptr: malloc'd elements structure
   */
-void free_shell(shell_t *shell_ptr)
+void free_shell(shell_t *shell_ptrs)
 {
-	free(shell_ptr->path_values);
-	free(shell_ptr->input);
-	free(shell_ptr->input_token);
-	free(shell_ptr->path_modify);
+	free(shell_ptrs->path_values);
+	free(shell_ptrs->input);
+	free(shell_ptrs->input_token);
+	free(shell_ptrs->path_modify);
 }
 
 /**
@@ -25,7 +25,7 @@ void print_cmd(char *cmd, char *filename)
 
 	(void)filename;
 	char_num = _strlen(error) + _strlen(cmd);
-	error_message = malloc(sizeof(char) + (char_num++));
+	error_message = malloc(sizeof(char) * (++char_num));
 	while (*cmd != '\0')
 		error_message[i++] = *cmd++;
 	while (*error != '\0')
