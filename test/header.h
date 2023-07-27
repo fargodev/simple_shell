@@ -66,7 +66,7 @@ void free_shell(shell_t *);
 void print_cmd(char *, char *);
 
 /** builtin.c **/
-int myexit(shell_t *);
+void myexit(shell_t *);
 void printenv(shell_t *);
 
 /** main.c **/

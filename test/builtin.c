@@ -32,6 +32,7 @@ void printenv(shell_t *ptr)
 {
 	char newline = '\n';
 	unsigned int i, k;
+	char **environ;
 
 	(void)ptr;
 	if (environ == NULL)

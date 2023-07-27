@@ -115,7 +115,7 @@ int run_built_ins(shell_t *ptrs, char *filename)
 	unsigned int words_num;
 	char **words_input;
 	built_t cmd[] = {
-		{"exit", _myexit},
+		{"exit", myexit},
 		{"env", printenv},
 		{NULL, NULL},
 	};
@@ -150,6 +150,7 @@ int run_path(shell_t *shell_ptrs, char *filename)
 	pid_t child_pid;
 	int status;
 	char **input_token = shell_ptrs->input_token;
+	char **environ;
 
 	child_pid = fork();
 	if (child_pid == 0)
