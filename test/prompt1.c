@@ -44,7 +44,7 @@ char **getpath(char **path_modify)
 	{
 		for (i = 0, j = 0; path[i] != '\0'; i++)
 		{
-			if (i == 0 && path[i] == '.')
+			if (i == 0 && path[i] == ':')
 			{
 				(*path_modify)[j++] = '.';
 				(*path_modify)[j++] = path[i];
