@@ -1,6 +1,12 @@
 # Simple_shell Project
 <img src="https://www.tecmint.com/wp-content/uploads/2020/11/if-else-statement.png"></img><br>
-This is a partnered project to build our own version of Unix simple shell or command line which works exactly the same as an OS command line.
+## MABERT SHELL
+MABERT SHELL - as the name implies meaning MAbo and herBERT shell the two collaborators who worked together to create this amazing project.
+## Introduction
+Simple Shell is a simple project version or form of Linux shell command line. This project
+tasked us to using all the knowledge if gathered so far in the past three month of ALX program studying C-Language. This is a partnered project to build our own version of Unix simple shell or command line which works exactly the same as an OS command line in it simple form.
+<br>
+The advantage of this project is that it helps to test our collaborative spirit and standard work ethics. It also exposes us to real application of skills gathered with the focus of honing our skillset the more.
 
 ## Helpful Resources
 [Writing Unix Shell - Part I](https://indradhanush.github.io/blog/writing-a-unix-shell-part-1/)<br>
@@ -38,5 +44,5 @@ $
 ```
 
 ## Collaborators
-[Nelson Ogunniran](https://github.com/fargodev) <br>
+[Wale Herbert](https://github.com/trucedev) <br>
 [Mabo Gwala](https://github.com/Pontsho04)
