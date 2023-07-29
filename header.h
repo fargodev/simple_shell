@@ -75,6 +75,11 @@ int run_cmd(shell_t *, char *, char **);
 int run_path(shell_t *, char *);
 int slash_checker(char *);
 
+/** toem exit.c **/
+char *_strcpy(char *, char *, int);
+char *_strncat(char *, char *, int);
+char *_strchr(char *, char *);
+
 /** function prototypes **/
 char *_strtok(char *, const char *);
 ssize_t get_line(char **, size_t *, FILE *);
