@@ -21,7 +21,7 @@ int main(int argc, char *argv[], char *argenv[])
 	print_ps(0);
 	shell_ptrs.path_modify = path_modify;
 	shell_ptrs.path_values = path_values;
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, SIG_DFL);
 	while ((getline_stat = getline(&input, &input_num, stdin)) != -1)
 	{
 		shell_ptrs.input = input;
@@ -79,6 +79,7 @@ int run_cmd(shell_t *shell_ptrs, char *filename, char **argenv)
 		child_pid = fork();
 		if (child_pid == 0)
 		{
+			signal(SIGINT, SIG_DFL);
 			input_org = _strdup(input_token[0]);
 			input_token[0] = find_pathname(path, input_token[0]);
 			if (input_token[0] != NULL)
@@ -157,6 +158,7 @@ int run_path(shell_t *shell_ptrs, char *filename)
 	child_pid = fork();
 	if (child_pid == 0)
 	{
+		signal(SIGINT, SIG_DFL);
 		if (execve(input_token[0], input_token, environ) == -1)
 			perror(filename);
 		free_shell(shell_ptrs);
