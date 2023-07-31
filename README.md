@@ -44,5 +44,5 @@ $
 ```
 
 ## Collaborators
-[Wale Herbert](https://github.com/trucedev) <br>
+[Wale Herbert](https://github.com/hertdev) <br>
 [Mabo Gwala](https://github.com/Pontsho04)
