@@ -63,11 +63,11 @@ char *_strncat(char *dest, char *src, int n)
  * @c: character to look for
  * Return: (s) a pointer to the memory area s
  */
-char *strchr(const char *s, int c);
+char *strchr(const char *s, int c)
 {
 	do {
-		if (*s == c)
-			return (s);
+	if (*s == c)
+		return (NULL);
 	} while (*s++ != '\0');
 
 	return (NULL);
